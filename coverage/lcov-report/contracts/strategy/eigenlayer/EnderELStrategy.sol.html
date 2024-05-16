@@ -1,0 +1,563 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/strategy/eigenlayer/EnderELStrategy.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../../../prettify.css" />
+    <link rel="stylesheet" href="../../../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../../../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../../../index.html">all files</a> / <a href="index.html">contracts/strategy/eigenlayer/</a> EnderELStrategy.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>0/22</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>0/14</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>0/7</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">0% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>0/36</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line low'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+&nbsp;
+import "../BaseStrategy.sol";
+&nbsp;
+interface IStrategy {
+    function maxTotalDeposits() external view returns (uint256);
+}
+&nbsp;
+interface IStrategyManager {
+    struct WithdrawerAndNonce {
+        address withdrawer;
+        uint96 nonce;
+    }
+&nbsp;
+    struct QueuedWithdrawal {
+        IStrategy[] strategies;
+        uint256[] shares;
+        address depositor;
+        WithdrawerAndNonce withdrawerAndNonce;
+        uint32 withdrawalStartBlock;
+        address delegatedAddress;
+    }
+&nbsp;
+    function depositIntoStrategy(IStrategy strategy, IERC20 token, uint256 amount) external returns (uint256 shares);
+&nbsp;
+    function queueWithdrawal(
+        uint256[] calldata strategyIndexes,
+        IStrategy[] calldata strategies,
+        uint256[] calldata shares,
+        address withdrawer,
+        bool undelegateIfPossible
+    ) external returns (bytes32);
+&nbsp;
+    function completeQueuedWithdrawal(
+        QueuedWithdrawal calldata queuedWithdrawal,
+        IERC20[] calldata tokens,
+        uint256 middlewareTimesIndex,
+        bool receiveAsTokens
+    ) external;
+}
+&nbsp;
+contract EnderELStrategy is BaseStrategy {
+    uint256 private constant strategyIndex = 0;
+&nbsp;
+    IStrategy public tokenStrategy;
+&nbsp;
+    mapping(address =&gt; uint96) private userNonce;
+    mapping(address =&gt; uint32) private queueBlock;
+&nbsp;
+    /**
+     * @notice Get user pending queue
+     * @param account Address of user wallet
+     */
+<span class="fstat-no" title="function not covered" >    function getQueueBlock(address account) external view returns (uint32) {</span>
+<span class="cstat-no" title="statement not covered" >        return queueBlock[account];</span>
+    }
+&nbsp;
+    /**
+     * @notice Set EL token strategy
+     * @param _str address of strategy
+     */
+<span class="fstat-no" title="function not covered" >    function setTokenStrategy(address _str) external onlyOwner {</span>
+<span class="cstat-no" title="statement not covered" >        if (_str == address(0)) revert ZeroAddress();</span>
+        tokenStrategy = IStrategy(_str);
+    }
+&nbsp;
+    /**
+     * @notice Function for deposit
+     * @param param deposit parameters
+     */
+<span class="fstat-no" title="function not covered" >    function deposit(EndRequest memory param) public onlyTreasury returns (uint256) {</span>
+        // approve token first
+<span class="cstat-no" title="statement not covered" >        IERC20(param.stakingToken).approve(strategy, param.tokenAmt)</span>;
+&nbsp;
+        // deposit to strategy
+<span class="cstat-no" title="statement not covered" >        return</span>
+            IStrategyManager(strategy).depositIntoStrategy(tokenStrategy, IERC20(param.stakingToken), param.tokenAmt);
+    }
+&nbsp;
+    /**
+     * @notice Function for withdraw request
+     * @param param withdraw request parameters
+     */
+<span class="fstat-no" title="function not covered" >    function withdrawRequest(EndRequest memory param) external onlyTreasury {</span>
+<span class="cstat-no" title="statement not covered" >        if (queueBlock[param.account] != 0) revert AlreadyRequested();</span>
+&nbsp;
+        unchecked {
+<span class="cstat-no" title="statement not covered" >            uint256[] memory strs = new uint256[](1);</span>
+            strs[0] = strategyIndex;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            uint256[] memory amts = new uint256[](1);</span>
+            amts[0] = param.tokenAmt;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >            IStrategy[] memory addrs = new IStrategy[](1);</span>
+            addrs[0] = tokenStrategy;
+&nbsp;
+            // queueWithdrawal
+<span class="cstat-no" title="statement not covered" >            IStrategyManager(strategy).queueWithdrawal(strs, addrs, amts, address(this), false)</span>;
+&nbsp;
+            queueBlock[param.account] = uint32(block.number);
+        }
+    }
+&nbsp;
+    /**
+     * @notice Function for withdraw
+     * @param param withdraw parameters
+     */
+<span class="fstat-no" title="function not covered" >    function withdrawStEth(EndRequest memory param) external onlyTreasury returns (uint256) {</span>
+<span class="cstat-no" title="statement not covered" >        if (queueBlock[param.account] == 0) revert NotRequested();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        IStrategyManager.WithdrawerAndNonce memory param1 = IStrategyManager.WithdrawerAndNonce(</span>
+            address(this),
+            userNonce[param.account]
+        );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        IStrategy[] memory strs = new IStrategy[](1);</span>
+        strs[0] = tokenStrategy;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uint256[] memory amts = new uint256[](1);</span>
+        amts[0] = param.tokenAmt;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        IStrategyManager.QueuedWithdrawal memory param2 = IStrategyManager.QueuedWithdrawal(</span>
+            strs,
+            amts,
+            address(this),
+            param1,
+            queueBlock[param.account],
+            address(0)
+        );
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        IERC20[] memory tokens = new IERC20[](1);</span>
+        tokens[0] = IERC20(param.stakingToken);
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        uint256 tokenAmt = IERC20(param.stakingToken).balanceOf(address(this));</span>
+<span class="cstat-no" title="statement not covered" >        IStrategyManager(strategy).completeQueuedWithdrawal(param2, tokens, 0, true)</span>;
+&nbsp;
+        unchecked {
+            tokenAmt = IERC20(param.stakingToken).balanceOf(address(this)) - tokenAmt;
+&nbsp;
+            delete queueBlock[param.account];
+            ++userNonce[param.account];
+        }
+&nbsp;
+        // transfer token to treasury
+<span class="cstat-no" title="statement not covered" >        IERC20(param.stakingToken).transfer(treasury, tokenAmt)</span>;
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        return tokenAmt;</span>
+    }
+&nbsp;
+    /**
+     * @notice Function to check depositable
+     * @param depositToken Address of deposit token
+     * @param depositAmt deposit token amount
+     */
+<span class="fstat-no" title="function not covered" >    function checkDeposit(address depositToken, uint256 depositAmt) external view override returns (bool depositable) {</span>
+<span class="cstat-no" title="statement not covered" >        uint256 depositLimit = tokenStrategy.maxTotalDeposits();</span>
+<span class="cstat-no" title="statement not covered" >        uint256 currentDeposit = IERC20(depositToken).balanceOf(address(tokenStrategy));</span>
+&nbsp;
+        depositable = currentDeposit + depositAmt &gt; depositLimit;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function hasRequest() external pure override returns (bool) {</span>
+<span class="cstat-no" title="statement not covered" >        return true;</span>
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Mar 11 2024 18:16:34 GMT+0200 (Eastern European Standard Time)
+</div>
+</div>
+<script src="../../../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../../../sorter.js"></script>
+</body>
+</html>

@@ -1,0 +1,794 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/EnderStaking.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> EnderStaking.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>66/66</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">98.57% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>69/70</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>19/19</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">100% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>84/84</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line high'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-yes">99×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">23×</span>
+<span class="cline-any cline-yes">22×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">38×</span>
+<span class="cline-any cline-yes">36×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-yes">10×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">594×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">593×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">593×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">21×</span>
+<span class="cline-any cline-yes">20×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">17×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">14×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">13×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">15×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">24×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-yes">16×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">29×</span>
+<span class="cline-any cline-yes">4×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">25×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">11×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-yes">3×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+&nbsp;
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol";
+import "./interfaces/ISEndToken.sol";
+import "./interfaces/IEnderTreasury.sol";
+import "./interfaces/ISEndToken.sol";
+import "./interfaces/IEnderBond.sol";
+import "hardhat/console.sol";
+&nbsp;
+error ZeroAddress();
+error InvalidAmount();
+error NotAllowed();
+error NotWhitelisted();
+&nbsp;
+contract EnderStaking is Initializable, EIP712Upgradeable, OwnableUpgradeable {
+    string private constant SIGNING_DOMAIN = "stakingContract";
+    string private constant SIGNATURE_VERSION = "1";
+    uint256 public bondRewardPercentage;
+    uint256 public rebasingIndex;  
+    uint256 public rebaseRefractionReward;
+    uint256 public lastRebaseReward;
+    address public signer;
+    address public endToken;
+    address public sEndToken;
+    address public enderTreasury;
+    address public enderBond;
+    address public stEth;
+    bool public isWhitelisted;
+    bool public stakingEnable;  // status of staking-pause feature (enabled/disabled)
+    bool public unstakeEnable;  // status of unstake-pause feature (enabled/disabled)
+    bool public stakingContractPause; // status of stakingContract-pause feature (enabled/disabled)
+&nbsp;
+    struct signData {
+        address user;
+        string key;
+        bytes signature;
+    }
+&nbsp;
+    event AddressUpdated(address indexed addr, uint256 indexed addrType);
+    event PercentUpdated(uint256 percent);
+    event stakingEnableSet(bool indexed isEnable);
+    event unstakeEnableSet(bool indexed isEnable);
+    event stakingContractPauseSet(bool indexed isEnable);
+    event Stake(address indexed staker, uint256 amount);
+    event unStake(address indexed withdrawer, uint256 amount);
+    event EpochStakingReward(address indexed asset, uint256 totalReward, uint256 rebaseRefractionReward, uint256 sendTokens);
+    event WhitelistChanged(bool indexed action);
+    event newSigner(address _signer);
+  
+    function initialize(address _end, address _sEnd, address _stEth, address _signer) external initializer {
+        __Ownable_init();
+        __EIP712_init(SIGNING_DOMAIN, SIGNATURE_VERSION);
+        signer = _signer;
+        stakingEnable = true; // for testing purpose
+        unstakeEnable = true;   // for testing purpose
+        stakingContractPause = true; // for testing purpose
+        isWhitelisted = false; // for testing purpose
+        setAddress(_end, 3);
+        setAddress(_sEnd, 4);
+        setAddress(_stEth, 5);
+        bondRewardPercentage = 10;
+    }
+&nbsp;
+    modifier stakingEnabled() {
+        if (stakingEnable != true) revert NotAllowed();
+        _;
+    }
+&nbsp;
+    modifier unstakeEnabled() {
+        if (unstakeEnable != true) revert NotAllowed();
+        _;
+    }
+&nbsp;
+    modifier stakingContractPaused() {
+        if (stakingContractPause != true) revert NotAllowed();
+        _; 
+    }
+&nbsp;
+    function setStakingEnable(bool _enable) external onlyOwner{
+        stakingEnable = _enable;
+        emit stakingEnableSet(_enable);
+    }
+&nbsp;
+    function setUnstakeEnable(bool _enable) external onlyOwner{
+        unstakeEnable = _enable;
+        emit unstakeEnableSet(_enable);
+    }
+&nbsp;
+    function setStakingPause(bool _enable) external onlyOwner{
+        stakingContractPause = _enable;
+        emit stakingContractPauseSet(_enable);
+    }
+&nbsp;
+    function setsigner(address _signer) external onlyOwner {
+        if (_signer == address(0)) revert ZeroAddress();
+        signer = _signer;
+        emit newSigner(signer);
+    }
+&nbsp;
+    function setAddress(address _addr, uint256 _type) public onlyOwner {
+        if (_addr == address(0)) revert ZeroAddress();
+&nbsp;
+        if (_type == 1) enderBond = _addr;
+        else if (_type == 2) enderTreasury = _addr;
+        else if (_type == 3) endToken = _addr;
+        else if (_type == 4) sEndToken = _addr;
+        else if (_type == 5) stEth = _addr;
+&nbsp;
+         emit AddressUpdated(_addr, _type);
+&nbsp;
+       
+    }
+&nbsp;
+    function setBondRewardPercentage(uint256 percent) external onlyOwner {
+        if (percent == 0) revert InvalidAmount();
+&nbsp;
+        bondRewardPercentage = percent;
+          emit PercentUpdated(bondRewardPercentage);
+&nbsp;
+        
+    }
+&nbsp;
+    function whitelist(bool _action) external onlyOwner{
+        isWhitelisted = _action;
+        emit WhitelistChanged(_action);
+    }
+&nbsp;
+    /**
+     * @notice Users do stake
+     * @param amount  stake amount
+     */
+    function stake(uint256 amount, signData memory userSign) external stakingEnabled stakingContractPaused{
+        // console.log("Inside Stake");
+        if (amount == 0) revert InvalidAmount();
+        if(isWhitelisted){
+            address signAddress = _verify(userSign);
+            <span class="missing-if-branch" title="else path not taken" >E</span>if(signAddress != signer || userSign.user != msg.sender) revert NotWhitelisted();
+        }
+        console.log("\nEnd token deposit:- ", amount);
+        if(ISEndToken(endToken).balanceOf(address(this)) == 0){
+            uint256 sEndAmount = calculateSEndTokens(amount);
+            console.log("\nReceipt token:- ", sEndAmount);
+            ISEndToken(sEndToken).mint(msg.sender, sEndAmount);
+            ISEndToken(endToken).transferFrom(msg.sender, address(this), amount);
+            calculateRebaseIndex();
+        } else {
+            // epochStakingReward(stEth);
+            ISEndToken(endToken).transferFrom(msg.sender, address(this), amount);          
+            uint256 sEndAmount = calculateSEndTokens(amount);
+            console.log("Receipt token:- ", sEndAmount);
+            ISEndToken(sEndToken).mint(msg.sender, sEndAmount);
+        }
+        emit Stake(msg.sender, amount);
+    }
+&nbsp;
+    /**
+     * @notice Users can unstake
+     * @param amount  unstake amount
+     */
+    function unstake(uint256 amount) external unstakeEnabled stakingContractPaused{
+        if (amount == 0) revert InvalidAmount();
+        if (ISEndToken(sEndToken).balanceOf(msg.sender) &lt; amount) revert InvalidAmount();
+        // add reward
+        // epochStakingReward(stEth);
+        uint256 reward = claimRebaseValue(amount);
+        console.log("\nWithraw amount of staking contract:- ", reward);
+        // transfer token
+        ISEndToken(endToken).transfer(msg.sender, reward);
+        ISEndToken(sEndToken).burn(msg.sender, amount);
+        emit unStake(msg.sender, amount);
+     
+    }
+&nbsp;
+    // Here in the asset we are adding stEth
+    function epochStakingReward(address _asset) public  {
+        if(_asset != stEth) revert NotAllowed();
+        uint256 totalReward = IEnderTreasury(enderTreasury).stakeRebasingReward(_asset);
+        lastRebaseReward = totalReward;
+&nbsp;
+        // console.log("Rebasereward", totalReward);
+        if(totalReward &gt; 0) {
+        // console.log("tytyutyuuugyugu",totalReward);
+            rebaseRefractionReward = (totalReward * bondRewardPercentage) / 100;
+            uint256 sendTokens = calculateSEndTokens(rebaseRefractionReward);
+            console.log("Rebase reward for bond holder's:- ", sendTokens);
+            IEnderBond(enderBond).epochRewardShareIndexForSend(sendTokens);
+            ISEndToken(sEndToken).mint(enderBond, sendTokens);
+            ISEndToken(endToken).mint(address(this), totalReward);
+            emit EpochStakingReward(_asset, totalReward, rebaseRefractionReward, sendTokens);  
+        }
+        calculateRebaseIndex();
+    }
+&nbsp;
+    function calculateSEndTokens(uint256 _endAmount) public view returns (uint256 sEndTokens) {
+        if (rebasingIndex == 0) {
+            sEndTokens = _endAmount;
+            return sEndTokens;
+        } else{
+            sEndTokens = (_endAmount * 1e18/ rebasingIndex); 
+            return sEndTokens; 
+        }
+    }
+&nbsp;
+    function calculateRebaseIndex() internal {
+        uint256 endBalStaking = ISEndToken(endToken).balanceOf(address(this));
+        uint256 sEndTotalSupply = ISEndToken(sEndToken).totalSupply();
+        if (endBalStaking == 0 || sEndTotalSupply == 0) {
+            rebasingIndex = 1e18;
+        } else {
+            rebasingIndex = endBalStaking * 1e18/ sEndTotalSupply;
+        }
+    }
+&nbsp;
+    function claimRebaseValue(uint256 _sendAmount) internal view returns (uint256 reward) {
+        console.log("rebasingIndex:- ", rebasingIndex);
+&nbsp;
+        reward = (_sendAmount * rebasingIndex) / 1e18;
+    }
+&nbsp;
+    function _hash(signData memory userSign) internal view returns (bytes32) {
+        return
+            _hashTypedDataV4(
+                keccak256(
+                    abi.encode(
+                        keccak256("userSign(address user,string key)"),
+                        userSign.user,
+                        keccak256(bytes(userSign.key))
+                    )
+                )
+            );
+    }
+&nbsp;
+    /**
+     * @notice verifying the owner signature to check whether the user is whitelisted or not
+     */
+    function _verify(signData memory userSign) internal view returns (address) {
+        bytes32 digest = _hash(userSign);
+        return ECDSAUpgradeable.recover(digest, userSign.signature);
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Mar 11 2024 18:16:34 GMT+0200 (Eastern European Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>

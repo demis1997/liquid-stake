@@ -1,0 +1,803 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <title>Code coverage report for contracts/EnderBondLiquidityDeposit.sol</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="../prettify.css" />
+    <link rel="stylesheet" href="../base.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style type='text/css'>
+        .coverage-summary .sorter {
+            background-image: url(../sort-arrow-sprite.png);
+        }
+    </style>
+</head>
+<body>
+<div class='wrapper'>
+  <div class='pad1'>
+    <h1>
+      <a href="../index.html">all files</a> / <a href="index.html">contracts/</a> EnderBondLiquidityDeposit.sol
+    </h1>
+    <div class='clearfix'>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">61.11% </span>
+        <span class="quiet">Statements</span>
+        <span class='fraction'>22/36</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">25.93% </span>
+        <span class="quiet">Branches</span>
+        <span class='fraction'>14/54</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">61.54% </span>
+        <span class="quiet">Functions</span>
+        <span class='fraction'>8/13</span>
+      </div>
+      <div class='fl pad1y space-right2'>
+        <span class="strong">67.35% </span>
+        <span class="quiet">Lines</span>
+        <span class='fraction'>33/49</span>
+      </div>
+    </div>
+  </div>
+  <div class='status-line medium'></div>
+<pre><table class="coverage">
+<tr><td class="line-count quiet">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190
+191
+192
+193
+194
+195
+196
+197
+198
+199
+200
+201
+202
+203
+204
+205
+206
+207
+208
+209
+210
+211
+212
+213
+214
+215
+216
+217
+218
+219
+220
+221
+222
+223
+224
+225
+226
+227
+228
+229
+230
+231
+232
+233
+234
+235
+236
+237
+238
+239
+240
+241
+242
+243
+244
+245
+246
+247</td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-yes">98×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-yes">5×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">8×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-yes">1×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-yes">7×</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.18;
+import "@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol";
+import "@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol";
+import "@openzeppelin/contracts-upgradeable/utils/cryptography/EIP712Upgradeable.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin/contracts-upgradeable/utils/cryptography/ECDSAUpgradeable.sol";
+import "contracts/interfaces/ISTETH.sol";
+import "hardhat/console.sol";
+&nbsp;
+contract EnderBondLiquidityDeposit is Initializable, EIP712Upgradeable, OwnableUpgradeable, ReentrancyGuardUpgradeable {
+    string private constant SIGNING_DOMAIN = "depositContract";
+    string private constant SIGNATURE_VERSION = "1";
+&nbsp;
+    address public stEth; // address of stEth
+    address public lido; // address of lido
+    address public signer; // address of signer
+    address public admin; // address of admin
+    address public enderBond; // address of enderBond
+    uint256 public index; // undex is used to track user info
+    uint256 public minDepositAmount; // minimum deposit amount for EnderBondLiquidityDeposit
+    uint256 public rewardShareIndex; // overall reward share index for users
+    bool public depositEnable; // Used for go live on a particular time
+    // @notice A mapping that indicates whether a token is bondable.
+    mapping(address =&gt; bool) public bondableTokens; // To allow a particular token to deposit
+    mapping(uint256 =&gt; uint256) public rewardSharePerUserIndexStEth; // reward share index of a user at the time of deposit
+    mapping(uint256 =&gt; uint256) public totalRewardOfUser;
+    // mapping(address =&gt; bool) public isWhitelisted;
+    mapping(uint256 =&gt; Bond) public bonds; // user info struct mapping with index
+&nbsp;
+    // user info
+    struct Bond {
+        address user;
+        uint256 principalAmount;
+        uint256 totalAmount;
+        uint256 bondFees;
+        uint256 maturity;
+    }
+&nbsp;
+    struct signData {
+        address user;
+        string key;
+        bytes signature;
+    }
+    
+    error InvalidAmount();
+    error InvalidMaturity();
+    error InvalidBondFee();
+    error ZeroAddress();
+    error NotAllowed();
+    error NotBondableToken();
+    error addressNotWhitelisted();
+    event newSigner(address _signer);
+    event depositEnableSet(bool depositEnable);
+    event MinDepAmountSet(uint256 indexed newAmount);
+    event BondableTokensSet(address indexed token, bool indexed isEnabled);
+    event WhitelistChanged(address indexed whitelistingAddress, bool indexed action);
+    event Deposit(
+        address indexed sender,
+        uint256 index,
+        uint256 bondFees,
+        uint256 principal,
+        uint256 maturity,
+        address token
+    );
+    event userInfo(
+        address indexed user,
+        uint256 index,
+        uint256 principal,
+        uint256 totalAmount,
+        uint256 bondFees,
+        uint256 maturity
+    );
+&nbsp;
+    function initialize(address _stEth, address _lido, address _signer, address _admin) public <span class="missing-if-branch" title="else path not taken" >E</span>initializer {
+        __Ownable_init();
+        __ReentrancyGuard_init();
+        __EIP712_init(SIGNING_DOMAIN, SIGNATURE_VERSION);
+        stEth = _stEth;
+        lido = _lido;
+        signer = _signer;
+        admin = _admin;
+        _transferOwnership(admin);
+        bondableTokens[_stEth] = true;
+        minDepositAmount = 100000000000000000;
+    }
+&nbsp;
+    modifier depositEnabled() {
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (depositEnable != true) revert NotAllowed();
+        _;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    modifier onlyBond() {</span>
+<span class="cstat-no" title="statement not covered" >        if (msg.sender != enderBond) revert NotAllowed();</span>
+        _;
+    }
+&nbsp;
+<span class="fstat-no" title="function not covered" >    function setsigner(address _signer) external onlyOwner {</span>
+<span class="cstat-no" title="statement not covered" >        require(_signer != address(0), "Address can't be zero")</span>;
+        signer = _signer;
+<span class="cstat-no" title="statement not covered" >        emit newSigner(signer);</span>
+    }
+&nbsp;
+    /**
+     * @notice Updates the bondable status for a list of tokens.
+     * @dev Sets the bondable status of a list of tokens. Only callable by the contract owner.
+     * @param tokens The addresses of the tokens to be updated.
+     * @param enabled Boolean value representing whether each token is bondable.
+     */
+<span class="fstat-no" title="function not covered" >    function setBondableTokens(address[] calldata tokens, bool enabled) external onlyOwner {</span>
+<span class="cstat-no" title="statement not covered" >        uint256 length = tokens.length;</span>
+<span class="cstat-no" title="statement not covered" >        for (uint256 i; i &lt; length; ++i) {</span>
+            bondableTokens[tokens[i]] = enabled;
+<span class="cstat-no" title="statement not covered" >            emit BondableTokensSet(tokens[i], enabled);</span>
+        }
+    }
+&nbsp;
+    /**
+     * @notice Updates the minimum deposit amount.
+     * @dev Sets the minimum deposit amount. Only callable by the contract owner.
+     * @param _amt The amount to be updated.
+     */
+<span class="fstat-no" title="function not covered" >    function setMinDepAmount(uint256 _amt) public onlyOwner {</span>
+        minDepositAmount = _amt;
+<span class="cstat-no" title="statement not covered" >        emit MinDepAmountSet(_amt);</span>
+    }
+&nbsp;
+    /**
+     * @notice Updates whether deposit is enabled or not.
+     * @dev Sets whether deposit is enabled or not. Only callable by the contract owner.
+     * @param _depositEnable true if enabled otherwise false.
+     */
+    function setDepositEnable(bool _depositEnable) public <span class="missing-if-branch" title="else path not taken" >E</span>onlyOwner {
+        depositEnable = _depositEnable;
+        emit depositEnableSet(depositEnable);
+    }
+&nbsp;
+    /**
+     * @notice Updates contract addresses.
+     * @dev Sets contract addresses. Only callable by the contract owner.
+     * @param _addr The address of the token or contracts to be updated.
+     * @param _type 1 ==&gt; stETH address, 2 ==&gt; lido adrress, 3 ==&gt; ender bond address.
+     */
+<span class="fstat-no" title="function not covered" >    function setAddress(address _addr, uint256 _type) public onlyOwner {</span>
+<span class="cstat-no" title="statement not covered" >        if (_addr == address(0)) revert ZeroAddress();</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered" >        if (_type == 1) stEth = _addr;</span>
+        else <span class="cstat-no" title="statement not covered" >if (_type == 2) lido = _addr;</span>
+        else <span class="cstat-no" title="statement not covered" >if (_type == 3) enderBond = _addr;</span>
+    }
+&nbsp;
+    /**
+     * @notice Allows a user to deposit a specified token into a bond
+     * @param principal The principal amount of the bond
+     * @param maturity The maturity date of the bond (lock time)
+     * @param bondFee Self-set bond fee
+     * @param token The address of the token (if token is zero address, then depositing ETH)
+     * @param userSign To verify user details for whitelisting
+     */
+    function deposit(
+        uint256 principal,
+        uint256 maturity,
+        uint256 bondFee,
+        address token,
+        signData memory userSign
+    ) external payable <span class="missing-if-branch" title="else path not taken" >E</span>nonReentrant <span class="missing-if-branch" title="else path not taken" >E</span>depositEnabled {
+        if (principal &lt; minDepositAmount) revert InvalidAmount();
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (maturity &lt; 7 || maturity &gt; 365) revert InvalidMaturity();
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (token != address(0) &amp;&amp; !bondableTokens[token]) revert NotBondableToken();
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (bondFee &lt; 0 || bondFee &gt; 10000) revert InvalidBondFee();
+        address signAddress = _verify(userSign);
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(signAddress == signer &amp;&amp; userSign.user == msg.sender, "user is not whitelisted");
+        // token transfer
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (token == address(0)) {
+<span class="cstat-no" title="statement not covered" >            if (msg.value != principal) revert InvalidAmount();</span>
+<span class="cstat-no" title="statement not covered" >            (bool suc, ) = payable(lido).call{value: msg.value}(</span>
+                abi.encodeWithSignature("submit(address)", address(this))
+            );
+<span class="cstat-no" title="statement not covered" >            require(suc, "lido eth deposit failed")</span>;
+        } else {
+            // send directly to the deposit contract
+            IERC20(token).transferFrom(msg.sender, address(this), principal);
+        }
+        index++;
+        bonds[index] = Bond(
+            msg.sender,
+            IStEth(stEth).getSharesByPooledEth(principal),
+            IStEth(stEth).getSharesByPooledEth(principal),
+            bondFee,
+            maturity
+        );
+&nbsp;
+        emit Deposit(msg.sender, index, bondFee, principal, maturity, token);
+    }
+&nbsp;
+    /**
+     * @notice This function is call by ender bond contract when ender bond contract go live
+     * @param _index this is used to get user info of a particular user
+     */
+    function depositedIntoBond(
+        uint256 _index
+    ) external  returns (address user, uint256 principal, uint256 bondFees, uint256 maturity) {
+        principal = IStEth(stEth).getPooledEthByShares(bonds[_index].principalAmount);
+        emit userInfo(
+            bonds[_index].user,
+            index,
+            bonds[_index].principalAmount,
+            principal,
+            bonds[_index].bondFees,
+            bonds[_index].maturity
+        );
+        return (bonds[_index].user, principal, bonds[_index].bondFees, bonds[_index].maturity);
+    }
+&nbsp;
+    /**
+     * @notice This function is call by Admin address when ender bond contract go live for approval of stEth
+     * @param _bond The address of ender bond
+     * @param _amount this input is used for approval
+     */
+    function approvalForBond(address _bond, uint256 _amount) external <span class="missing-if-branch" title="else path not taken" >E</span>onlyOwner {
+        <span class="missing-if-branch" title="else path not taken" >E</span>require(_bond != address(0), "Address can't be zero");
+        IERC20(stEth).approve(_bond, _amount);
+    }
+&nbsp;
+    function _hash(signData memory userSign) internal view returns (bytes32) {
+        return
+            _hashTypedDataV4(
+                keccak256(
+                    abi.encode(
+                        keccak256("userSign(address user,string key)"),
+                        userSign.user,
+                        keccak256(bytes(userSign.key))
+                    )
+                )
+            );
+    }
+&nbsp;
+    /**
+     * @notice verifying the owner signature to check whether the user is whitelisted or not
+     */
+    function _verify(signData memory userSign) internal view returns (address) {
+        bytes32 digest = _hash(userSign);
+        return ECDSAUpgradeable.recover(digest, userSign.signature);
+    }
+}
+&nbsp;</pre></td></tr>
+</table></pre>
+<div class='push'></div><!-- for sticky footer -->
+</div><!-- /wrapper -->
+<div class='footer quiet pad2 space-top1 center small'>
+  Code coverage
+  generated by <a href="http://istanbul-js.org/" target="_blank">istanbul</a> at Mon Mar 11 2024 18:16:34 GMT+0200 (Eastern European Standard Time)
+</div>
+</div>
+<script src="../prettify.js"></script>
+<script>
+window.onload = function () {
+        if (typeof prettyPrint === 'function') {
+            prettyPrint();
+        }
+};
+</script>
+<script src="../sorter.js"></script>
+</body>
+</html>
